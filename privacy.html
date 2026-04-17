@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy - Astro Cat</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    h1, h2 {
+      color: #38bdf8;
+    }
+
+    .lang {
+      margin-top: 40px;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
+    }
+
+    .highlight {
+      color: #4ade80;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🔒 Privacy Policy</h1>
+    <p>Last updated: <span id="date"></span></p>
+
+    <h2>1. Information We Collect</h2>
+    <p>
+      We may collect limited information such as device data, gameplay data,
+      and optional account data when using Sign in with Apple.
+    </p>
+
+    <h2>2. How We Use Information</h2>
+    <p>
+      - To improve gameplay experience<br>
+      - To enable PvP features<br>
+      - To save user progress across devices
+    </p>
+
+    <h2>3. Data Sharing</h2>
+    <p>
+      We do not sell or share personal data with third parties except for
+      essential services (e.g., analytics, ads if applicable).
+    </p>
+
+    <h2>4. Security</h2>
+    <p>
+      We take reasonable measures to protect your data.
+    </p>
+
+    <h2>5. Contact</h2>
+    <p>
+      Email: <span class="highlight">your@email.com</span>
+    </p>
+
+    <!-- Vietnamese -->
+    <div class="lang">
+      <h1>🔒 Chính sách bảo mật</h1>
+      <p>Cập nhật lần cuối: <span id="date2"></span></p>
+
+      <h2>1. Thông tin chúng tôi thu thập</h2>
+      <p>
+        Chúng tôi có thể thu thập một số thông tin như dữ liệu thiết bị,
+        dữ liệu trò chơi và thông tin tài khoản khi bạn sử dụng đăng nhập Apple.
+      </p>
+
+      <h2>2. Mục đích sử dụng</h2>
+      <p>
+        - Cải thiện trải nghiệm trò chơi<br>
+        - Hỗ trợ tính năng PvP<br>
+        - Lưu tiến trình người chơi
+      </p>
+
+      <h2>3. Chia sẻ dữ liệu</h2>
+      <p>
+        Chúng tôi không bán hoặc chia sẻ dữ liệu cá nhân với bên thứ ba,
+        ngoại trừ các dịch vụ cần thiết (ví dụ: phân tích, quảng cáo nếu có).
+      </p>
+
+      <h2>4. Bảo mật</h2>
+      <p>
+        Chúng tôi áp dụng các biện pháp hợp lý để bảo vệ dữ liệu của bạn.
+      </p>
+
+      <h2>5. Liên hệ</h2>
+      <p>
+        Email: <span class="highlight">xuanthe01656@email.com</span>
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    const today = new Date().toLocaleDateString();
+    document.getElementById("date").textContent = today;
+    document.getElementById("date2").textContent = today;
+  </script>
+</body>
+</html>
