@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Astro Cat Support</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background: #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 25px;
+      color: #facc15;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .email {
+      color: #4ade80;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🚀 Astro Cat Support</h1>
+
+    <p>If you need help with Astro Cat, feel free to contact us anytime.</p>
+
+    <h2>📧 Contact</h2>
+    <p>Email: <span class="email">xuanthe01656@email.com</span></p>
+
+    <h2>❓ Frequently Asked Questions</h2>
+    <ul>
+      <li><strong>Game not loading?</strong><br>Check your internet connection and try again.</li>
+      <li><strong>Lost progress?</strong><br>Please contact us via email for support.</li>
+      <li><strong>Game crashes?</strong><br>Try restarting the app or updating to the latest version.</li>
+    </ul>
+
+    <h2>⏱ Support Time</h2>
+    <p>We usually respond within 24 hours.</p>
+
+    <div class="footer">
+ 	 © <span id="year"></span> Astro Cat. All rights reserved.
+    </div>
+  </div>
+	<script>
+  	document.getElementById("year").textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
