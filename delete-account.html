@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account and Data Deletion Request</title>
+  <meta name="description" content="General account and data deletion request page for mobile apps." />
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --panel-2: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --cyan: #38bdf8;
+      --green: #4ade80;
+      --red: #fb7185;
+      --yellow: #facc15;
+      --border: #1e293b;
+      --link: #7dd3fc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(251, 113, 133, 0.12), transparent 36%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.36);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      color: var(--cyan);
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0 0 8px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 22px;
+    }
+
+    h3 {
+      margin-top: 18px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 12px 0;
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .highlight {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .warning {
+      color: var(--yellow);
+      font-weight: 700;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .box {
+      background: rgba(17, 24, 39, 0.86);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+
+    .template {
+      white-space: pre-wrap;
+      overflow-x: auto;
+      background: rgba(2, 6, 23, 0.74);
+      border: 1px solid var(--border);
+      color: #dbeafe;
+      border-radius: 14px;
+      padding: 16px;
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      font-size: 14px;
+    }
+
+    ul, ol {
+      padding-left: 24px;
+    }
+
+    code {
+      background: rgba(2, 6, 23, 0.72);
+      border: 1px solid var(--border);
+      color: #bfdbfe;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--cyan);
+    }
+
+    td {
+      background: rgba(17, 24, 39, 0.62);
+    }
+
+    .lang {
+      margin-top: 44px;
+      border-top: 1px solid var(--border);
+      padding-top: 30px;
+    }
+
+    .footer {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px;
+      }
+
+      .container {
+        padding: 20px;
+        border-radius: 14px;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        border-bottom: 0;
+      }
+
+      tr {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <span class="badge">Account & Data Deletion</span>
+
+    <h1>Account and Data Deletion Request</h1>
+    <p class="muted">Last updated: 2026-07-07</p>
+
+    <p>
+      This page explains how users can request deletion of their account and associated data for any app
+      or game that links to this page.
+    </p>
+
+    <div class="box">
+      <p>
+        Contact email:
+        <a href="mailto:xuanthe01656@gmail.com?subject=%5BYour%20App%20Name%5D%20-%20Delete%20Account%20Request">
+          xuanthe01656@gmail.com
+        </a>
+      </p>
+      <p class="muted">
+        Please replace <code>[Your App Name]</code> with the name of the app or game you used.
+      </p>
+    </div>
+
+    <h2>1. How to request deletion</h2>
+    <p>
+      To request deletion of your account and associated data, please send an email to
+      <a href="mailto:xuanthe01656@gmail.com?subject=%5BYour%20App%20Name%5D%20-%20Delete%20Account%20Request">
+        xuanthe01656@gmail.com
+      </a>
+      with the subject:
+    </p>
+
+    <div class="box">
+      <code>[Your App Name] - Delete Account Request</code>
+    </div>
+
+    <p>Please include the following information in your email:</p>
+    <ul>
+      <li>App or game name.</li>
+      <li>Email address used to sign in to the app.</li>
+      <li>Sign-in method, if known: Google, Apple, Email/Password, or another provider.</li>
+      <li>A clear confirmation that you want your account and associated data deleted.</li>
+    </ul>
+
+    <h2>2. Email template</h2>
+    <p>You may copy and use this template:</p>
+    <div class="template">Subject: [Your App Name] - Delete Account Request
+
+App name:
+Login email:
+Sign-in method:
+Request: Please delete my account and associated data for this app.
+
+I understand that deleted account data may not be recoverable.</div>
+
+    <h2>3. Verification</h2>
+    <p>
+      For security reasons, we may need to verify that you own the account before completing the deletion request.
+      When possible, please send the request from the same email address used to sign in to the app.
+    </p>
+
+    <h2>4. Data that may be deleted</h2>
+    <p>
+      Depending on the specific app, account deletion may include deleting data linked to your account, such as:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Data category</th>
+          <th>Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account data</td>
+          <td>User ID, login email, display name, sign-in provider, and account profile data linked to the app.</td>
+        </tr>
+        <tr>
+          <td>App or game progress</td>
+          <td>Cloud save, progress, unlocked content, records, achievements, settings, and other app-specific data.</td>
+        </tr>
+        <tr>
+          <td>Support data</td>
+          <td>Messages or requests you sent to support, if they are linked to your account and no longer needed.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>5. Data that may remain</h2>
+    <p>
+      Some data may remain if it is not personally linked to your account, is stored only on your device,
+      has already been anonymized or aggregated, or must be retained for security, fraud prevention, legal,
+      accounting, dispute resolution, or platform compliance reasons.
+    </p>
+
+    <h2>6. Local device data</h2>
+    <p>
+      Data stored only on your device may not be removed by a server-side deletion request. You can usually remove
+      local app data by uninstalling the app or clearing the app storage from your device settings.
+    </p>
+
+    <h2>7. Processing time</h2>
+    <p>
+      We aim to process valid deletion requests within <span class="highlight">7 to 30 days</span>.
+      We may contact you if more information is required to verify or complete your request.
+    </p>
+
+    <h2>8. Contact</h2>
+    <p>
+      For any questions about account or data deletion, contact us at
+      <a href="mailto:xuanthe01656@gmail.com">xuanthe01656@gmail.com</a>.
+    </p>
+
+    <section class="lang" lang="vi">
+      <span class="badge">Xóa tài khoản & dữ liệu</span>
+
+      <h1>Yêu cầu xóa tài khoản và dữ liệu</h1>
+      <p class="muted">Cập nhật lần cuối: 2026-07-07</p>
+
+      <p>
+        Trang này giải thích cách người dùng có thể yêu cầu xóa tài khoản và dữ liệu liên quan
+        cho bất kỳ ứng dụng hoặc trò chơi nào liên kết đến trang này.
+      </p>
+
+      <div class="box">
+        <p>
+          Email liên hệ:
+          <a href="mailto:xuanthe01656@gmail.com?subject=%5BYour%20App%20Name%5D%20-%20Delete%20Account%20Request">
+            xuanthe01656@gmail.com
+          </a>
+        </p>
+        <p class="muted">
+          Vui lòng thay <code>[Your App Name]</code> bằng tên ứng dụng hoặc trò chơi bạn đã sử dụng.
+        </p>
+      </div>
+
+      <h2>1. Cách yêu cầu xóa</h2>
+      <p>
+        Để yêu cầu xóa tài khoản và dữ liệu liên quan, vui lòng gửi email đến
+        <a href="mailto:xuanthe01656@gmail.com?subject=%5BYour%20App%20Name%5D%20-%20Delete%20Account%20Request">
+          xuanthe01656@gmail.com
+        </a>
+        với tiêu đề:
+      </p>
+
+      <div class="box">
+        <code>[Your App Name] - Delete Account Request</code>
+      </div>
+
+      <p>Vui lòng cung cấp các thông tin sau trong email:</p>
+      <ul>
+        <li>Tên ứng dụng hoặc trò chơi.</li>
+        <li>Email đã dùng để đăng nhập vào ứng dụng.</li>
+        <li>Phương thức đăng nhập nếu bạn biết: Google, Apple, Email/Password hoặc nhà cung cấp khác.</li>
+        <li>Xác nhận rõ rằng bạn muốn xóa tài khoản và dữ liệu liên quan.</li>
+      </ul>
+
+      <h2>2. Mẫu email</h2>
+      <p>Bạn có thể sao chép và dùng mẫu này:</p>
+      <div class="template">Subject: [Your App Name] - Delete Account Request
+
+App name:
+Login email:
+Sign-in method:
+Request: Please delete my account and associated data for this app.
+
+I understand that deleted account data may not be recoverable.</div>
+
+      <h2>3. Xác minh</h2>
+      <p>
+        Vì lý do bảo mật, chúng tôi có thể cần xác minh rằng bạn là chủ sở hữu tài khoản trước khi hoàn tất yêu cầu xóa.
+        Nếu có thể, vui lòng gửi yêu cầu từ đúng email đã dùng để đăng nhập vào ứng dụng.
+      </p>
+
+      <h2>4. Dữ liệu có thể được xóa</h2>
+      <p>
+        Tùy theo từng ứng dụng cụ thể, việc xóa tài khoản có thể bao gồm xóa dữ liệu được liên kết với tài khoản của bạn, chẳng hạn như:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nhóm dữ liệu</th>
+            <th>Ví dụ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dữ liệu tài khoản</td>
+            <td>User ID, email đăng nhập, tên hiển thị, nhà cung cấp đăng nhập và dữ liệu hồ sơ liên kết với ứng dụng.</td>
+          </tr>
+          <tr>
+            <td>Tiến trình ứng dụng hoặc trò chơi</td>
+            <td>Cloud save, tiến trình, nội dung đã mở khóa, kỷ lục, thành tích, cài đặt và dữ liệu riêng của từng ứng dụng.</td>
+          </tr>
+          <tr>
+            <td>Dữ liệu hỗ trợ</td>
+            <td>Tin nhắn hoặc yêu cầu hỗ trợ bạn đã gửi, nếu dữ liệu đó liên kết với tài khoản và không còn cần thiết.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. Dữ liệu có thể còn lại</h2>
+      <p>
+        Một số dữ liệu có thể còn lại nếu dữ liệu đó không liên kết cá nhân với tài khoản của bạn,
+        chỉ được lưu trên thiết bị, đã được ẩn danh hoặc tổng hợp, hoặc cần được giữ lại vì lý do bảo mật,
+        chống gian lận, pháp lý, kế toán, giải quyết tranh chấp hoặc tuân thủ yêu cầu nền tảng.
+      </p>
+
+      <h2>6. Dữ liệu cục bộ trên thiết bị</h2>
+      <p>
+        Dữ liệu chỉ lưu trên thiết bị của bạn có thể không bị xóa bởi yêu cầu xóa phía máy chủ.
+        Bạn thường có thể xóa dữ liệu cục bộ bằng cách gỡ cài đặt ứng dụng hoặc xóa dữ liệu ứng dụng
+        trong phần cài đặt thiết bị.
+      </p>
+
+      <h2>7. Thời gian xử lý</h2>
+      <p>
+        Chúng tôi cố gắng xử lý các yêu cầu xóa hợp lệ trong vòng
+        <span class="highlight">7 đến 30 ngày</span>.
+        Chúng tôi có thể liên hệ nếu cần thêm thông tin để xác minh hoặc hoàn tất yêu cầu.
+      </p>
+
+      <h2>8. Liên hệ</h2>
+      <p>
+        Nếu có câu hỏi về việc xóa tài khoản hoặc dữ liệu, vui lòng liên hệ
+        <a href="mailto:xuanthe01656@gmail.com">xuanthe01656@gmail.com</a>.
+      </p>
+    </section>
+
+    <p class="footer">
+      © 2026. Account and Data Deletion Request. Contact:
+      <a href="mailto:xuanthe01656@gmail.com">xuanthe01656@gmail.com</a>.
+    </p>
+  </main>
+</body>
+</html>
