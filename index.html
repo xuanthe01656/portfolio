@@ -1,339 +1,194 @@
-<script type="text/javascript">
-      var gk_isXlsx = false;
-      var gk_xlsxFileLookup = {};
-      var gk_fileData = {};
-      function filledCell(cell) {
-       return cell !== '' && cell != null;
-      }
-      function loadFileData(filename) {
-      if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-        try {
-          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-          var firstSheetName = workbook.SheetNames[0];
-          var worksheet = workbook.Sheets[firstSheetName];
-  
-          // Convert sheet to JSON to filter blank rows
-          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-          // Filter out blank rows (rows where all cells are empty, null, or undefined)
-          var filteredData = jsonData.filter(row => row.some(filledCell));
-  
-          // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-          var headerRowIndex = filteredData.findIndex((row, index) =>
-           row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-          );
-          // Fallback
-          if (headerRowIndex === -1 || headerRowIndex > 25) {
-           headerRowIndex = 0;
-          }
-  
-          // Convert filtered JSON back to CSV
-          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-          return csv;
-        } catch (e) {
-          console.error(e);
-          return "";
-        }
-      }
-      return gk_fileData[filename] || "";
-      }
-      </script><!DOCTYPE html>
-  <html lang="en">
-  <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Nguyen Xuan The - Cyber Developer</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-   <style>
-    /* Font and Smooth Scroll */
-    html {
-     scroll-behavior: smooth;
-     font-family: 'Orbitron', sans-serif;
-     background: #0a0a0a;
-     color: #e0e0e0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyen Xuan The - Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; font-family: 'Orbitron', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+    .lang-toggle {
+      position: fixed; top: 20px; z-index: 1000;
+      background: rgba(0, 255, 249, 0.1); border: 1px solid #00fff9;
+      padding: 8px 16px; border-radius: 50px; cursor: pointer; backdrop-filter: blur(10px);
     }
-    /* Parallax effect */
-    .parallax {
-     background-attachment: fixed;
-     background-position: center;
-     background-repeat: no-repeat;
-     background-size: cover;
-     position: relative;
-    }
-    header {
-     background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3)), url('https://source.unsplash.com/random/1920x1080/?cyberpunk,neon');
-     min-height: 350px;
-     display: flex;
-     align-items: center;
-     position: relative;
-     overflow: hidden;
-    }
-    #about {
-     background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://source.unsplash.com/random/1920x1080/?tech,futuristic');
-    }
-    #skills {
-     background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://source.unsplash.com/random/1920x1080/?digital,code');
-    }
-    #career { 
-     background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://source.unsplash.com/random/1920x1080/?hacker,neon');
-    }
-    /* Glitch text effect */
-    .glitch {
-     position: relative;
-     animation: glitch 1s linear infinite;
-    }
-    @keyframes glitch {
-     2%, 64% { transform: translate(2px, 0) skew(0deg); }
-     4%, 60% { transform: translate(-2px, 0) skew(0deg); }
-     62% { transform: translate(0, 0) skew(5deg); }
-    }
-    .glitch:before,
-    .glitch:after {
-     content: attr(data-text);
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-    }
-    .glitch:before {
-     left: 2px;
-     text-shadow: -2px 0 #ff00ff;
-     clip: rect(44px, 450px, 56px, 0);
-     animation: glitch-anim 5s infinite linear alternate-reverse;
-    }
-    .glitch:after {
-     left: -2px;
-     text-shadow: -2px 0 #00fff9;
-     clip: rect(44px, 450px, 56px, 0);
-     animation: glitch-anim2 5s infinite linear alternate-reverse;
-    }
-    @keyframes glitch-anim {
-     0% { clip: rect(31px, 9999px, 94px, 0); transform: translate(0); }
-     100% { clip: rect(76px, 9999px, 44px, 0); transform: translate(-2px); }
-    }
-    @keyframes glitch-anim2 {
-     0% { clip: rect(65px, 9999px, 12px, 0); transform: translate(0); }
-     100% { clip: rect(23px, 9999px, 88px, 0); transform: translate(2px); }
-    }
-    /* Skill card neon glow */
-    .skill-card {
-     background: rgba(255, 255, 255, 0.05);
-     border: 1px solid rgba(255, 255, 255, 0.1);
-     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-     transition: box-shadow 0.3s ease;
-    }
-    .skill-card:hover {
-     box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-    }
-    /* Scroll-triggered animations */
-    .scroll-hidden {
-     opacity: 0;
-     transform: translateY(50px);
-     transition: all 0.8s ease-out;
-    }
-    .scroll-visible {
-     opacity: 1;
-     transform: translateY(0);
-    }
-    /* Profile image glow */
-    .profile-img {
-     transition: transform 0.5s ease, box-shadow 0.5s ease;
-    }
-    header:hover .profile-img {
-     transform: scale(1.1);
-     box-shadow: 0 0 40px rgba(0, 255, 255, 0.7);
-    }
-    /* Link hover effect */
-    .link-hover {
-     transition: transform 0.3s ease, text-shadow 0.3s ease;
-    }
-    .link-hover:hover {
-     transform: scale(1.1);
-     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-    }
-    /* Mobile parallax fallback */
-    @media (max-width: 768px) {
-     .parallax {
-      background-attachment: scroll;
-     }
-    }
-   </style>
-  </head>
-  <body>
-    <header class="parallax text-white py-16 relative">
-    <canvas id="particle-canvas" class="absolute inset-0"></canvas>
-    <div class="container mx-auto text-center px-4 relative z-10">
-     <img src="./assets/img/mypicture.jpg" alt="Profile Picture" class="profile-img w-32 h-32 rounded-full mx-auto mb-4 border-2 border-cyan-300 shadow-xl">
-     <h1 class="text-5xl font-bold glitch" data-text="Nguyen Xuan The">Nguyen Xuan The</h1>
-     <p class="text-xl mt-2 animate__animated animate__fadeInUp animate__delay-1s text-cyan-300">Cyber Developer</p>
-     <p class="text-lg mt-1 text-gray-300 animate__animated animate__fadeInUp animate__delay-1-5s">Birthday: 04/05/1997</p>
-  
-     <div class="mt-6 flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp animate__delay-2s">
-      <a href="mailto:nguyenvana@example.com" class="link-hover text-lg text-cyan-200">Email: xuanthe01656@gmail.com</a>
-      <a href="tel:+84123456789" class="link-hover text-lg text-cyan-200">Phone: +84 365 059 057</a>
-      <a href="https://linkedin.com/in/nguyenvana" target="_blank" class="link-hover text-lg text-cyan-200">LinkedIn</a>
-      <a href="https://github.com/xuanthe01656" target="_blank" class="link-hover text-lg text-cyan-200">GitHub</a>
-     </div>
+    [lang="vi"] { display: none; }
+    header { min-height: 550px; display: flex; align-items: center; position: relative; overflow: hidden; }
+    #particle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .skill-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 255, 249, 0.1); transition: all 0.4s; }
+    .skill-card:hover { border-color: #00fff9; box-shadow: 0 0 20px rgba(0, 255, 249, 0.2); transform: translateY(-5px); }
+    .scroll-hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .scroll-visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <button class="lang-toggle text-cyan-400 font-bold text-xs" onclick="toggleLanguage()">VN / EN</button>
+
+  <header class="relative">
+    <canvas id="particle-canvas"></canvas>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <img src="./assets/img/anh2.png" alt="Nguyen Xuan The" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-cyan-400 shadow-lg object-cover">
+      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400">Nguyen Xuan The</h1>
+      <p lang="en" class="text-lg text-gray-300 mt-2 italic">Mechanical Technical Staff & FullStack Developer</p>
+      <p lang="vi" class="text-lg text-gray-300 mt-2 italic">Nhân viên Kỹ thuật Cơ khí & Lập trình viên FullStack</p>
+      
+      <div class="mt-6 flex flex-wrap justify-center gap-4 text-xs text-gray-400">
+        <span>📍 Da Nang, Vietnam</span>
+        <span>📞 0356.059.057 - 0332.420.710</span>
+        <span>📧 xuanthe01656@gmail.com</span>
+      </div>
     </div>
-   </header>
-  
-    <section id="about" class="parallax py-16 scroll-hidden">
-    <div class="container mx-auto px-4">
-     <h2 class="text-4xl font-bold text-center mb-8 text-cyan-300 animate__animated animate__fadeInDown">About Me</h2>
-     <p class="text-lg text-gray-300 max-w-3xl mx-auto animate__animated animate__fadeInUp">
-      I'm a visionary Full-Stack Developer with 3+ years of experience, crafting cutting-edge web applications that push boundaries. My expertise in front-end and back-end technologies fuels my passion for creating seamless, futuristic digital experiences.
-     </p>
+  </header>
+
+  <!-- Objective & Honors -->
+  <section class="py-12 bg-black/50">
+    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-8 scroll-hidden">
+      <div class="skill-card p-6 rounded-xl">
+        <h2 lang="en" class="text-cyan-400 font-bold mb-4 italic">OBJECTIVE</h2>
+        <h2 lang="vi" class="text-cyan-400 font-bold mb-4 italic">MỤC TIÊU</h2>
+        <p lang="en" class="text-sm text-gray-300 leading-relaxed">With intense passion for development and a high progressive spirit, I desire to contribute to the company's evolution through teamwork and continuous learning.</p>
+        <p lang="vi" class="text-sm text-gray-300 leading-relaxed">Với niềm đam mê mãnh liệt trong phát triển phần mềm và tinh thần cầu tiến, tôi khao khát đóng góp sức mình vào sự phát triển của công ty thông qua làm việc nhóm và học hỏi không ngừng.</p>
+      </div>
+      <div class="skill-card p-6 rounded-xl border-cyan-500/50">
+        <h2 lang="en" class="text-cyan-400 font-bold mb-4 italic">HONORS & AWARDS</h2>
+        <h2 lang="vi" class="text-cyan-400 font-bold mb-4 italic">DANH HIỆU & GIẢI THƯỞNG</h2>
+        <p class="text-sm text-white font-bold">AAA-class Employee</p>
+        <p class="text-xs text-gray-400">Year: 2024-2025, 2025-2026</p>
+      </div>
     </div>
-   </section>
-  
-    <section id="skills" class="parallax py-16 scroll-hidden">
-    <div class="container mx-auto px-4">
-     <h2 class="text-4xl font-bold text-center mb-8 text-cyan-300 animate__animated animate__fadeInDown">Skills</h2>
-     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div class="skill-card p-6 rounded-xl text-center animate__animated animate__fadeInUp animate__delay-0s" data-tilt data-tilt-max="15">
-       <h3 class="text-xl font-semibold text-cyan-200">Front-End</h3>
-       <p class="text-gray-300 mt-2">HTML, CSS, JavaScript, React-Next.js</p>
-      </div>
-      <div class="skill-card p-6 rounded-xl text-center animate__animated animate__fadeInUp animate__delay-1s" data-tilt data-tilt-max="15">
-       <h3 class="text-xl font-semibold text-cyan-200">Back-End</h3>
-       <p class="text-gray-300 mt-2">PHP, PHP Laravel, Java Spring, Java Spring Boot, Python</p>
-      </div>
-      <div class="skill-card p-6 rounded-xl text-center animate__animated animate__fadeInUp animate__delay-2s" data-tilt data-tilt-max="15">
-       <h3 class="text-xl font-semibold text-cyan-200">Databases</h3>
-       <p class="text-gray-300 mt-2">MySQL, SQL Server, Oracle Database</p>
-      </div>
-      <div class="skill-card p-6 rounded-xl text-center animate__animated animate__fadeInUp animate__delay-3s" data-tilt data-tilt-max="15">
-       <h3 class="text-xl font-semibold text-cyan-200">DevOps & Tools</h3>
-       <p class="text-gray-300 mt-2">Docker, Git</p>
-      </div>
-      <div class="skill-card p-6 rounded-xl text-center animate__animated animate__fadeInUp animate__delay-3s" data-tilt data-tilt-max="15">
-        <h3 class="text-xl font-semibold text-cyan-200">Office</h3>
-        <p class="text-gray-300 mt-2">Word, Excel, Power Point, Access,VBA (Visual Basic for Applications)</p>
-       </div>
-       <div class="skill-card p-6 rounded-xl text-center animate__animated animate__fadeInUp animate__delay-3s" data-tilt data-tilt-max="15">
-        <h3 class="text-xl font-semibold text-cyan-200">Business Intelligence</h3>
-        <p class="text-gray-300 mt-2">Power BI</p>
-      </div>
-     </div>
-    </div>
-   </section>
-  
-    <section id="career" class="parallax py-16 scroll-hidden">
-    <div class="container mx-auto px-4">
-     <h2 class="text-4xl font-bold text-center mb-8 text-cyan-300 animate__animated animate__fadeInDown">Career Path</h2>
-     
-     <div class="lg:grid lg:grid-cols-2 lg:gap-12 max-w-6xl mx-auto">
-  
-          <div id="experience" class="lg:mb-0 mb-12">
-       <h3 class="text-3xl font-bold text-cyan-200 mb-6 border-b border-cyan-800 pb-2">Experience</h3>
-       <div class="space-y-6">
-        <div class="skill-card p-6 rounded-xl animate__animated animate__slideInUp" data-tilt data-tilt-max="10">
-         <h4 class="text-xl font-semibold text-cyan-200">Full-Stack Developer at Murata Company</h4>
-         <p class="text-gray-400">2024 - Present</p>
-         <p class="text-gray-300 mt-2">Engineered a scalable web-based platform for faulty machine management and employee skill tracking using PHP, HTML, CSS, JavaScript, and MySQL (Oracle, SQL Server). Integrated real-time data visualization and user role-based access control. Deployed on IIS to ensure high availability, performance, and seamless scalability across enterprise environments.</p>
+  </section>
+
+  <!-- Experience -->
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <h2 lang="en" class="text-3xl font-bold text-center mb-12 text-cyan-300">WORK EXPERIENCE</h2>
+      <h2 lang="vi" class="text-3xl font-bold text-center mb-12 text-cyan-300">KINH NGHIỆM LÀM VIỆC</h2>
+      
+      <div class="space-y-8 max-w-5xl mx-auto">
+        <!-- Murata Projects -->
+        <div class="scroll-hidden border-l-2 border-cyan-500 pl-6 space-y-6">
+          <div class="text-sm text-cyan-500 font-bold">MURATA MANUFACTURING VIETNAM | 05/2024 - Present</div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="skill-card p-5 rounded-lg">
+              <h4 class="text-white font-bold mb-2">Employee Skill Management System</h4>
+              <p lang="en" class="text-xs text-gray-400">Developed full system (Front-end, Back-end, DB) using PHP, MySQL, and IIS. Streamlined HR workflows.</p>
+              <p lang="vi" class="text-xs text-gray-400">Phát triển hệ thống toàn diện (Giao diện, Logic, DB) bằng PHP, MySQL và IIS. Tối ưu hóa quy trình quản lý nhân sự.</p>
+            </div>
+            <div class="skill-card p-5 rounded-lg">
+              <h4 class="text-white font-bold mb-2">Component Management System</h4>
+              <p lang="en" class="text-xs text-gray-400">Built solution to track inventory and suppliers using PHP/MySQL. Improved accuracy for the organization.</p>
+              <p lang="vi" class="text-xs text-gray-400">Xây dựng giải pháp theo dõi kho và nhà cung cấp bằng PHP/MySQL. Cải thiện độ chính xác cho tổ chức.</p>
+            </div>
+          </div>
         </div>
-        <div class="skill-card p-6 rounded-xl animate__animated animate__slideInUp animate__delay-1s" data-tilt data-tilt-max="10">
-         <h4 class="text-xl font-semibold text-cyan-200">Freelancer</h4>
-         <p class="text-gray-400">2022 - 2023</p>
-         <p class="text-gray-300 mt-2">Crafted bespoke websites using PHP/Java Spring, JavaScript, and MySQL.</p>
+
+        <!-- Freelance -->
+        <div class="scroll-hidden border-l-2 border-purple-500 pl-6 space-y-6">
+          <div class="text-sm text-purple-500 font-bold">FREELANCER | 2025</div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="skill-card p-5 rounded-lg">
+              <h4 class="text-white font-bold mb-2">CasarDoor E-Commerce Website</h4>
+              <p class="text-xs text-cyan-400 mb-2">React, Vite, Firebase, Tailwind CSS</p>
+              <p lang="en" class="text-xs text-gray-400">Built a fast, responsive premium door shopping experience with real-time data services.</p>
+              <p lang="vi" class="text-xs text-gray-400">Xây dựng trải nghiệm mua sắm cửa cao cấp nhanh, phản hồi tốt với dịch vụ dữ liệu thời gian thực.</p>
+              <p>Link Website: <a href="https://www.casardoor.com/" target="_blank">https://www.casardoor.com/ </a></p>
+            </div>
+            <div class="skill-card p-5 rounded-lg">
+              <h4 class="text-white font-bold mb-2">Build App Game (Astro Cat)</h4>
+              <p class="text-xs text-cyan-400 mb-2">Android - Google Play</p>
+              <p lang="en" class="text-xs text-gray-400">Published mobile game from design to deployment. Managed app signing and store listing.</p>
+              <p lang="vi" class="text-xs text-gray-400">Phát hành game di động từ khâu thiết kế đến triển khai. Quản lý ký ứng dụng và danh sách cửa hàng.</p>
+              <p>Link App: <a href="https://play.google.com/store/apps/details?id=com.ban.astrocat" target="_blank">https://play.google.com/store/apps/details?id=com.ban.astrocat</a></p>
+            </div>
+          </div>
         </div>
-       </div>
+
+        <!-- Camera -->
+        <div class="scroll-hidden border-l-2 border-gray-500 pl-6">
+          <div class="text-sm text-gray-400 font-bold">TAN THANG LUC CO., LTD | 05/2023 - 11/2023</div>
+          <p lang="en" class="text-xs text-gray-500 mt-2">Installation of IP and Wifi camera systems.</p>
+          <p lang="vi" class="text-xs text-gray-500 mt-2">Lắp đặt hệ thống camera IP và Wifi.</p>
+        </div>
       </div>
-  
-          <div id="education">
-       <h3 class="text-3xl font-bold text-cyan-200 mb-6 border-b border-cyan-800 pb-2">Education</h3>
-       <div class="space-y-6">
-        <div class="skill-card p-6 rounded-xl animate__animated animate__slideInUp animate__delay-2s" data-tilt data-tilt-max="10">
-         <h4 class="text-xl font-semibold text-cyan-200">Bachelor of Science in Information Technology</h4>
-         <p class="text-gray-400">Danang College of Technology | 2019 - 2021</p>
-         <p class="text-gray-300 mt-2">Major in Automotive Engineering Technology. GPA: 3.5/4.0.</p>
-      </div>
-       </div>
-      </div>
-  
-     </div>
     </div>
-   </section>
-  
-    <footer class="bg-gradient-to-r from-cyan-900 to-purple-900 text-white py-6 animate__animated animate__fadeIn">
-    <div class="container mx-auto text-center">
-     <p>&copy; 2025 Nguyen Xuan The. All rights reserved.</p>
+  </section>
+
+  <!-- Education & Certs -->
+  <section class="py-16 bg-[#0d0d0d]">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto scroll-hidden">
+        <div>
+          <h2 lang="en" class="text-2xl font-bold mb-8 text-cyan-300 italic">EDUCATION</h2>
+          <h2 lang="vi" class="text-2xl font-bold mb-8 text-cyan-300 italic">HỌC VẤN</h2>
+          <div class="space-y-6">
+            <div class="skill-card p-4 rounded-lg">
+              <p class="text-cyan-400 font-bold">Automotive Engineer</p>
+              <p class="text-xs text-white">Danang Vocational College (2016-2019)</p>
+              <p class="text-xs text-gray-400 mt-1">GPA: 8.3/10 (Good Level)</p>
+            </div>
+            <div class="skill-card p-4 rounded-lg">
+              <p class="text-cyan-400 font-bold">Java FullStack Developer</p>
+              <p class="text-xs text-white">VinaEnter Academy (2022-2023)</p>
+              <p class="text-xs text-gray-400 mt-1">GPA: 95/100</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 lang="en" class="text-2xl font-bold mb-8 text-cyan-300 italic">CERTIFICATIONS</h2>
+          <h2 lang="vi" class="text-2xl font-bold mb-8 text-cyan-300 italic">CHỨNG CHỈ</h2>
+          <ul class="space-y-4 text-xs text-gray-300">
+            <li class="flex items-center gap-2"><span class="text-cyan-400">✔</span> VinaEnter Academy Java Developer</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400">✔</span> Soft Skills & Office Informatics</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400">✔</span> Mechanical Technical Expertise</li>
+          </ul>
+        </div>
+      </div>
     </div>
-   </footer>
-  
-    <script>
-    // Smooth Scroll for Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-       behavior: 'smooth'
-      });
-     });
-    });
-  
-    // Scroll-triggered Animations
-    const scrollElements = document.querySelectorAll('.scroll-hidden');
-    const observer = new IntersectionObserver((entries) => {
-     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-       entry.target.classList.add('scroll-visible');
-      }
-     });
+  </section>
+
+  <footer class="py-10 border-t border-cyan-900/30 text-center">
+    <p class="text-gray-600 text-xs italic">&copy; <span id="year"></span> Nguyen Xuan The | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    let currentLang = 'en';
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'vi' : 'en';
+      document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = currentLang === 'en' ? 'block' : 'none');
+      document.querySelectorAll('[lang="vi"]').forEach(el => el.style.display = currentLang === 'vi' ? 'block' : 'none');
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const obs = new IntersectionObserver((es) => {
+      es.forEach(e => { if(e.isIntersecting) e.target.classList.add('scroll-visible'); });
     }, { threshold: 0.1 });
-    scrollElements.forEach(el => observer.observe(el));
-  
-    // Vanilla Tilt for 3D effect
-    VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
-     max: 15,
-     speed: 400,
-     glare: true,
-     'max-glare': 0.5
-    });
-  
-    // Three.js Particle Background
+    document.querySelectorAll('.scroll-hidden').forEach(el => obs.observe(el));
+
+    VanillaTilt.init(document.querySelectorAll('[data-tilt]'), { max: 10, speed: 400 });
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/550, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('particle-canvas'), alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particleCount = 1000;
-    const posArray = new Float32Array(particleCount * 3);
-  
-    for (let i = 0; i < particleCount * 3; i++) {
-     posArray[i] = (Math.random() - 0.5) * 10;
-    }
-  
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const material = new THREE.PointsMaterial({
-     size: 0.02,
-     color: 0x00fff9,
-     transparent: true,
-     opacity: 0.8
-    });
-  
-    const particlesMesh = new THREE.Points(particlesGeometry, material);
-    scene.add(particlesMesh);
-    camera.position.z = 5;
-  
-    function animate() {
-     requestAnimationFrame(animate);
-     particlesMesh.rotation.y += 0.002;
-     renderer.render(scene, camera);
-    }
-    animate();
-  
-    // Resize handler
+    renderer.setSize(window.innerWidth, 550);
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(1500 * 3);
+    for(let i=0; i<4500; i++) pos[i] = (Math.random()-0.5)*10;
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const mesh = new THREE.Points(geo, new THREE.PointsMaterial({ size: 0.015, color: 0x00fff9, transparent: true, opacity: 0.5 }));
+    scene.add(mesh);
+    camera.position.z = 4;
+    function anim() { requestAnimationFrame(anim); mesh.rotation.y += 0.001; renderer.render(scene, camera); }
+    anim();
     window.addEventListener('resize', () => {
-     renderer.setSize(window.innerWidth, window.innerHeight);
-     camera.aspect = window.innerWidth / window.innerHeight;
-     camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, 550);
+      camera.aspect = window.innerWidth / 550;
+      camera.updateProjectionMatrix();
     });
-   </script>
-  </body>
-  </html>
+  </script>
+</body>
+</html>
