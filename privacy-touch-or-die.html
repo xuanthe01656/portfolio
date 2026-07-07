@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - Touch or Die</title>
+  <meta name="description" content="Privacy Policy for Touch or Die mobile game." />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #020617;
+      --panel: #0f172a;
+      --panel-2: #111c35;
+      --text: #e5eefb;
+      --muted: #a8b3c7;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: #24324f;
+      --danger: #fb7185;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(251, 113, 133, 0.12), transparent 26%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(17, 28, 53, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    h1, h2, h3 { line-height: 1.25; }
+    h1 { color: var(--accent); margin-top: 0; font-size: 2rem; }
+    h2 { color: var(--accent); margin-top: 2rem; }
+    h3 { color: #93c5fd; margin-top: 1.2rem; }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); }
+    .pill {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--accent);
+      font-size: 0.92rem;
+      margin: 4px 6px 4px 0;
+    }
+    a { color: #7dd3fc; word-break: break-word; }
+    .box {
+      background: rgba(2, 6, 23, 0.34);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: rgba(56, 189, 248, 0.12); color: #bfdbfe; }
+    td { background: rgba(15, 23, 42, 0.42); }
+    .lang-switch {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .lang-switch a {
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(56, 189, 248, 0.08);
+    }
+    .separator {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 44px 0;
+    }
+    .contact {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      .container { padding: 18px; border-radius: 14px; }
+      table, thead, tbody, th, td, tr { display: block; }
+      th { display: none; }
+      td { border-top: 0; }
+      td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--muted);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section id="en">
+      <h1>Privacy Policy</h1>
+      <p class="muted"><strong>App:</strong> Touch or Die<br />
+      <strong>Last updated:</strong> July 8, 2026<br />
+      <strong>Contact:</strong> <span class="contact">xuanthe01656@gmail.com</span></p>
+
+      <div class="lang-switch">
+        <a href="#en">English</a>
+        <a href="#vi">Tiếng Việt</a>
+      </div>
+
+      <p>
+        This Privacy Policy explains how Touch or Die ("the App", "we", "us", or "our") collects,
+        uses, stores, and shares information when you install or use the App on Android or iOS.
+        By using the App, you agree to the practices described in this Privacy Policy.
+      </p>
+
+      <div class="box">
+        <strong>Short summary:</strong> Touch or Die is a mobile game. We may collect optional account
+        information for sign-in and cloud save, gameplay progress, device/app diagnostics, and advertising-related
+        data through third-party services such as Firebase and Google AdMob. We do not sell your personal information.
+      </div>
+
+      <h2>1. Information We Collect</h2>
+      <p>The App may collect or process the following categories of information:</p>
+
+      <table aria-label="Data collection summary">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Category">Account information</td>
+            <td data-label="Examples">User ID, email address, display name, profile photo, sign-in provider, authentication status.</td>
+            <td data-label="Purpose">To support Google Sign-In, Sign in with Apple, email/password sign-in, account recovery, and cloud save.</td>
+          </tr>
+          <tr>
+            <td data-label="Category">Gameplay and progress data</td>
+            <td data-label="Examples">Unlocked levels, deaths, best times, ranks, coins, skins, settings, achievements/progress records, cloud save data.</td>
+            <td data-label="Purpose">To save progress, sync progress across devices, restore game data after reinstall, and improve gameplay experience.</td>
+          </tr>
+          <tr>
+            <td data-label="Category">Device and app information</td>
+            <td data-label="Examples">Device type, operating system, app version, language, approximate technical diagnostics, crash or performance information where available.</td>
+            <td data-label="Purpose">To maintain app stability, troubleshoot issues, prevent abuse, and improve compatibility.</td>
+          </tr>
+          <tr>
+            <td data-label="Category">Advertising data</td>
+            <td data-label="Examples">Advertising ID, ad impressions, ad interactions, approximate device/ad delivery information, consent status where required.</td>
+            <td data-label="Purpose">To show ads, limit ad frequency, measure ad performance, and support rewarded ads.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        We do not intentionally collect precise location, contacts, photos, camera, microphone, health data,
+        financial information, or government identifiers through the App.
+      </p>
+
+      <h2>2. How We Use Information</h2>
+      <p>We use information to:</p>
+      <ul>
+        <li>Provide and operate the game.</li>
+        <li>Authenticate users who choose to sign in.</li>
+        <li>Save and sync gameplay progress across devices.</li>
+        <li>Display banner, interstitial, and rewarded advertisements where enabled.</li>
+        <li>Maintain security, prevent abuse, and fix bugs.</li>
+        <li>Improve game balance, performance, and user experience.</li>
+        <li>Comply with legal, platform, and store requirements.</li>
+      </ul>
+
+      <h2>3. Third-Party Services</h2>
+      <p>The App may use third-party services that process data under their own privacy policies, including:</p>
+      <ul>
+        <li><strong>Firebase / Google services</strong> for authentication, cloud save, app services, and diagnostics.</li>
+        <li><strong>Google AdMob</strong> for advertising, ad measurement, consent management, and rewarded ads.</li>
+        <li><strong>Google Play services</strong> on Android devices where applicable.</li>
+        <li><strong>Apple services</strong> such as Sign in with Apple and App Store services on iOS devices where applicable.</li>
+      </ul>
+      <p>
+        You can review Google's Privacy Policy at
+        <a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a>
+        and Apple Privacy information at
+        <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">https://www.apple.com/legal/privacy/</a>.
+      </p>
+
+      <h2>4. Ads and Tracking Choices</h2>
+      <p>
+        The App may show ads through Google AdMob. Depending on your region, device settings, and consent choices,
+        ads may be personalized or non-personalized. Advertising partners may use identifiers such as the Advertising ID
+        to deliver, cap, and measure ads. You can reset or limit your advertising identifier through your device settings.
+      </p>
+      <p>
+        On iOS, where required, the App may request permission under Apple's App Tracking Transparency framework before
+        tracking across apps and websites owned by other companies. If you deny tracking permission, the App will use
+        non-tracking or limited advertising options where available.
+      </p>
+
+      <h2>5. Data Sharing</h2>
+      <p>
+        We do not sell your personal information. We may share or allow processing of information only in the following cases:
+      </p>
+      <ul>
+        <li>With service providers that help operate the App, such as Firebase and AdMob.</li>
+        <li>When required by law, regulation, legal process, or platform policy.</li>
+        <li>To protect the rights, security, and integrity of users, the App, or our services.</li>
+        <li>With your consent or at your direction.</li>
+      </ul>
+
+      <h2>6. Data Retention</h2>
+      <p>
+        We retain gameplay and account-related data for as long as needed to provide the App, maintain your cloud save,
+        comply with legal obligations, resolve disputes, and enforce our agreements. If you delete your account or request
+        deletion, we will delete or anonymize your data unless retention is required by law or legitimate security reasons.
+      </p>
+
+      <h2>7. Account and Data Deletion</h2>
+      <p>
+        You may request access, correction, or deletion of your data by contacting us at
+        <span class="contact">xuanthe01656@gmail.com</span>. Please include the email address or user ID associated with
+        your account so we can identify the data. We may need to verify your identity before processing a request.
+      </p>
+
+      <h2>8. Children's Privacy</h2>
+      <p>
+        Touch or Die is not directed to children under the age of 13, or the minimum age required in your country.
+        We do not knowingly collect personal information from children. If you believe a child has provided personal
+        information to us, please contact us and we will take appropriate steps to delete it.
+      </p>
+
+      <h2>9. Security</h2>
+      <p>
+        We use reasonable technical and organizational measures to protect information. However, no method of transmission
+        or storage is completely secure, and we cannot guarantee absolute security.
+      </p>
+
+      <h2>10. International Transfers</h2>
+      <p>
+        The App and its service providers may process information on servers located in different countries. By using the App,
+        you understand that your information may be processed outside your country of residence, subject to applicable law.
+      </p>
+
+      <h2>11. Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. When we update it, we will revise the "Last updated" date above.
+        Continued use of the App after an update means you accept the updated policy.
+      </p>
+
+      <h2>12. Contact Us</h2>
+      <p>
+        If you have questions or requests about this Privacy Policy, contact us at:
+        <br /><span class="contact">xuanthe01656@gmail.com</span>
+      </p>
+    </section>
+
+    <hr class="separator" />
+
+    <section id="vi" lang="vi">
+      <h1>Chính sách quyền riêng tư</h1>
+      <p class="muted"><strong>Ứng dụng:</strong> Touch or Die<br />
+      <strong>Cập nhật lần cuối:</strong> 08/07/2026<br />
+      <strong>Liên hệ:</strong> <span class="contact">xuanthe01656@gmail.com</span></p>
+
+      <p>
+        Chính sách quyền riêng tư này giải thích cách Touch or Die ("Ứng dụng", "chúng tôi") thu thập,
+        sử dụng, lưu trữ và chia sẻ thông tin khi bạn cài đặt hoặc sử dụng Ứng dụng trên Android hoặc iOS.
+        Khi sử dụng Ứng dụng, bạn đồng ý với các nội dung được mô tả trong chính sách này.
+      </p>
+
+      <div class="box">
+        <strong>Tóm tắt:</strong> Touch or Die là một trò chơi di động. Chúng tôi có thể thu thập thông tin tài khoản
+        tùy chọn để đăng nhập và đồng bộ dữ liệu, tiến trình chơi, thông tin thiết bị/chẩn đoán kỹ thuật và dữ liệu liên quan
+        đến quảng cáo thông qua các dịch vụ bên thứ ba như Firebase và Google AdMob. Chúng tôi không bán dữ liệu cá nhân của bạn.
+      </div>
+
+      <h2>1. Thông tin chúng tôi thu thập</h2>
+      <p>Ứng dụng có thể thu thập hoặc xử lý các loại thông tin sau:</p>
+
+      <table aria-label="Tóm tắt dữ liệu thu thập">
+        <thead>
+          <tr>
+            <th>Loại dữ liệu</th>
+            <th>Ví dụ</th>
+            <th>Mục đích</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Loại dữ liệu">Thông tin tài khoản</td>
+            <td data-label="Ví dụ">User ID, email, tên hiển thị, ảnh đại diện, nhà cung cấp đăng nhập, trạng thái xác thực.</td>
+            <td data-label="Mục đích">Hỗ trợ đăng nhập Google, đăng nhập Apple, email/mật khẩu, khôi phục tài khoản và lưu dữ liệu đám mây.</td>
+          </tr>
+          <tr>
+            <td data-label="Loại dữ liệu">Dữ liệu chơi game và tiến trình</td>
+            <td data-label="Ví dụ">Level đã mở, số lần chết, best time, rank, coin, skin, cài đặt, thành tích/tiến trình, dữ liệu cloud save.</td>
+            <td data-label="Mục đích">Lưu tiến trình, đồng bộ qua nhiều thiết bị, khôi phục dữ liệu sau khi cài lại và cải thiện trải nghiệm chơi.</td>
+          </tr>
+          <tr>
+            <td data-label="Loại dữ liệu">Thông tin thiết bị và ứng dụng</td>
+            <td data-label="Ví dụ">Loại thiết bị, hệ điều hành, phiên bản app, ngôn ngữ, thông tin chẩn đoán kỹ thuật, lỗi hoặc hiệu năng nếu có.</td>
+            <td data-label="Mục đích">Duy trì độ ổn định, xử lý lỗi, ngăn chặn lạm dụng và cải thiện khả năng tương thích.</td>
+          </tr>
+          <tr>
+            <td data-label="Loại dữ liệu">Dữ liệu quảng cáo</td>
+            <td data-label="Ví dụ">Advertising ID, lượt hiển thị quảng cáo, tương tác quảng cáo, thông tin phục vụ quảng cáo, trạng thái đồng ý nếu cần.</td>
+            <td data-label="Mục đích">Hiển thị quảng cáo, giới hạn tần suất, đo hiệu quả quảng cáo và hỗ trợ rewarded ads.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Chúng tôi không cố ý thu thập vị trí chính xác, danh bạ, ảnh, camera, microphone, dữ liệu sức khỏe,
+        thông tin tài chính hoặc giấy tờ định danh thông qua Ứng dụng.
+      </p>
+
+      <h2>2. Cách chúng tôi sử dụng thông tin</h2>
+      <p>Chúng tôi sử dụng thông tin để:</p>
+      <ul>
+        <li>Cung cấp và vận hành trò chơi.</li>
+        <li>Xác thực người dùng khi người dùng chọn đăng nhập.</li>
+        <li>Lưu và đồng bộ tiến trình chơi trên nhiều thiết bị.</li>
+        <li>Hiển thị quảng cáo banner, interstitial và rewarded ads khi được bật.</li>
+        <li>Duy trì bảo mật, ngăn chặn lạm dụng và sửa lỗi.</li>
+        <li>Cải thiện cân bằng game, hiệu năng và trải nghiệm người dùng.</li>
+        <li>Tuân thủ yêu cầu pháp lý, nền tảng và cửa hàng ứng dụng.</li>
+      </ul>
+
+      <h2>3. Dịch vụ bên thứ ba</h2>
+      <p>Ứng dụng có thể sử dụng các dịch vụ bên thứ ba xử lý dữ liệu theo chính sách riêng của họ, bao gồm:</p>
+      <ul>
+        <li><strong>Firebase / Google services</strong> cho đăng nhập, cloud save, dịch vụ ứng dụng và chẩn đoán.</li>
+        <li><strong>Google AdMob</strong> cho quảng cáo, đo lường quảng cáo, quản lý đồng ý và rewarded ads.</li>
+        <li><strong>Google Play services</strong> trên thiết bị Android nếu áp dụng.</li>
+        <li><strong>Dịch vụ Apple</strong> như Sign in with Apple và App Store services trên iOS nếu áp dụng.</li>
+      </ul>
+      <p>
+        Bạn có thể xem Chính sách quyền riêng tư của Google tại
+        <a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a>
+        và thông tin quyền riêng tư của Apple tại
+        <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">https://www.apple.com/legal/privacy/</a>.
+      </p>
+
+      <h2>4. Quảng cáo và lựa chọn theo dõi</h2>
+      <p>
+        Ứng dụng có thể hiển thị quảng cáo thông qua Google AdMob. Tùy theo khu vực, cài đặt thiết bị và lựa chọn đồng ý,
+        quảng cáo có thể là cá nhân hóa hoặc không cá nhân hóa. Đối tác quảng cáo có thể sử dụng các mã định danh như
+        Advertising ID để phân phối, giới hạn tần suất và đo lường quảng cáo. Bạn có thể đặt lại hoặc giới hạn mã định danh
+        quảng cáo trong phần cài đặt thiết bị.
+      </p>
+      <p>
+        Trên iOS, khi được yêu cầu, Ứng dụng có thể xin quyền theo khuôn khổ App Tracking Transparency của Apple trước khi
+        theo dõi trên các ứng dụng và website thuộc sở hữu của công ty khác. Nếu bạn từ chối quyền theo dõi, Ứng dụng sẽ sử dụng
+        phương án quảng cáo không theo dõi hoặc bị giới hạn nếu có.
+      </p>
+
+      <h2>5. Chia sẻ dữ liệu</h2>
+      <p>Chúng tôi không bán dữ liệu cá nhân của bạn. Chúng tôi chỉ chia sẻ hoặc cho phép xử lý thông tin trong các trường hợp sau:</p>
+      <ul>
+        <li>Với nhà cung cấp dịch vụ giúp vận hành Ứng dụng, như Firebase và AdMob.</li>
+        <li>Khi pháp luật, quy định, quy trình pháp lý hoặc chính sách nền tảng yêu cầu.</li>
+        <li>Để bảo vệ quyền, an toàn và tính toàn vẹn của người dùng, Ứng dụng hoặc dịch vụ của chúng tôi.</li>
+        <li>Khi có sự đồng ý hoặc theo yêu cầu của bạn.</li>
+      </ul>
+
+      <h2>6. Thời gian lưu trữ dữ liệu</h2>
+      <p>
+        Chúng tôi lưu dữ liệu tài khoản và tiến trình chơi trong thời gian cần thiết để cung cấp Ứng dụng, duy trì cloud save,
+        tuân thủ nghĩa vụ pháp lý, giải quyết tranh chấp và thực thi thỏa thuận. Nếu bạn xóa tài khoản hoặc yêu cầu xóa dữ liệu,
+        chúng tôi sẽ xóa hoặc ẩn danh dữ liệu của bạn, trừ khi cần lưu giữ theo pháp luật hoặc lý do bảo mật hợp pháp.
+      </p>
+
+      <h2>7. Xóa tài khoản và dữ liệu</h2>
+      <p>
+        Bạn có thể yêu cầu truy cập, chỉnh sửa hoặc xóa dữ liệu bằng cách liên hệ
+        <span class="contact">xuanthe01656@gmail.com</span>. Vui lòng cung cấp email hoặc user ID liên kết với tài khoản để
+        chúng tôi xác định dữ liệu. Chúng tôi có thể cần xác minh danh tính trước khi xử lý yêu cầu.
+      </p>
+
+      <h2>8. Quyền riêng tư của trẻ em</h2>
+      <p>
+        Touch or Die không hướng đến trẻ em dưới 13 tuổi hoặc độ tuổi tối thiểu theo quy định tại quốc gia của bạn.
+        Chúng tôi không cố ý thu thập thông tin cá nhân của trẻ em. Nếu bạn cho rằng trẻ em đã cung cấp thông tin cá nhân,
+        vui lòng liên hệ với chúng tôi để chúng tôi thực hiện các bước phù hợp nhằm xóa dữ liệu đó.
+      </p>
+
+      <h2>9. Bảo mật</h2>
+      <p>
+        Chúng tôi áp dụng các biện pháp kỹ thuật và tổ chức hợp lý để bảo vệ thông tin. Tuy nhiên, không có phương thức truyền
+        hoặc lưu trữ nào an toàn tuyệt đối, và chúng tôi không thể đảm bảo an toàn tuyệt đối.
+      </p>
+
+      <h2>10. Chuyển dữ liệu quốc tế</h2>
+      <p>
+        Ứng dụng và các nhà cung cấp dịch vụ có thể xử lý thông tin trên máy chủ đặt tại nhiều quốc gia khác nhau. Khi sử dụng
+        Ứng dụng, bạn hiểu rằng thông tin của bạn có thể được xử lý bên ngoài quốc gia cư trú của bạn, theo quy định pháp luật áp dụng.
+      </p>
+
+      <h2>11. Thay đổi chính sách</h2>
+      <p>
+        Chúng tôi có thể cập nhật Chính sách quyền riêng tư này theo thời gian. Khi cập nhật, chúng tôi sẽ thay đổi ngày
+        "Cập nhật lần cuối" ở trên. Việc tiếp tục sử dụng Ứng dụng sau khi chính sách được cập nhật nghĩa là bạn chấp nhận
+        chính sách đã cập nhật.
+      </p>
+
+      <h2>12. Liên hệ</h2>
+      <p>
+        Nếu bạn có câu hỏi hoặc yêu cầu về Chính sách quyền riêng tư này, vui lòng liên hệ:
+        <br /><span class="contact">xuanthe01656@gmail.com</span>
+      </p>
+    </section>
+  </main>
+</body>
+</html>
