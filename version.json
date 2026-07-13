@@ -1,0 +1,32 @@
+  {
+    "schemaVersion": 1,
+    "channel": "production",
+    "platforms": {
+      "android": {
+        "latestVersion": "1.4.0",
+        "latestBuildNumber": 2,
+        "minimumVersion": "1.4.0",
+      "minimumBuildNumber": 2,
+      "force": false,
+      "updateMode": "flexible",
+      "packageName": "com.theit.touchordie",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.theit.touchordie",
+      "title": "",
+      "message": "",
+      "notes": []
+    },
+    "ios": {
+      "latestVersion": "1.4.0",
+      "latestBuildNumber": 1,
+      "minimumVersion": "1.4.0",
+      "minimumBuildNumber": 1,
+      "force": false,
+      "updateMode": "store",
+      "appId": "",
+      "storeUrl": "",
+      "title": "",
+      "message": "",
+      "notes": []
+    }
+  }
+}
